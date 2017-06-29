@@ -27,7 +27,6 @@ class App extends React.Component {
 											<Link to='/' className='bigSpacer'>Try going back home!</Link>
 										</div>
 									</div>
-
 								)
 							}} />
 					</Switch>

@@ -1,5 +1,6 @@
 var React = require('react');
 var PropTypes = require('prop-types');
+var Link = require('react-router-dom').Link;
 
 class Search extends React.Component {
 	constructor(props){
@@ -8,7 +9,6 @@ class Search extends React.Component {
 			city: ''
 		};
 		this.handleChange = this.handleChange.bind(this);
-		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 	handleChange(event) {
 		var value = event.target.value;
@@ -18,38 +18,33 @@ class Search extends React.Component {
 			}
 		});
 	}
-	handleSubmit(event) {
-		event.preventDefault();
-		this.props.onSubmit(
-			this.state.city
-		);
-		console.log(this.state.city)
-	}
 	render(){
 		return (
-			<form className='column smallSpacer' onSubmit={this.handleSubmit}>
+			<div className={this.props.orientation + ' smallSpacer'}>
 				<input
-					id='city'
 					placeholder='eg Thessaloniki, Greece'
 					type='text'
 					autoComplete='off'
-					htmlFor='city'
 					value={this.state.city}
 					onChange={this.handleChange}
 					/>
-				<button
+				{this.state.city && 
+				<Link
 					className='button'
-					type='submit'
-					disabled={!this.state.city}>
+					onClick={() => {this.setState(() => {return {city: ''}});}}
+					to={{
+						pathname: '/weather',
+            search: '?city=' + this.state.city
+					}} >
 					Search
-				</button>
-			</form>
+				</Link>}
+			</div>
 		);
 	}
 }
 
 Search.propTypes = {
-	onSubmit: PropTypes.func.isRequired
+	orientation: PropTypes.string.isRequired
 }
 
 module.exports = Search;

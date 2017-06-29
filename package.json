@@ -25,7 +25,8 @@
     "query-string": "^4.3.4",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-router-dom": "^4.1.1"
+    "react-router-dom": "^4.1.1",
+    "react-timestamp": "^4.2.1"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",

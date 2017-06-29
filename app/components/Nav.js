@@ -1,5 +1,6 @@
 var React = require('react');
 var NavLink = require('react-router-dom').NavLink;
+var Search = require('./Search');
 
 function Nav() {
 	return (
@@ -10,7 +11,7 @@ function Nav() {
 		 		</NavLink>
 		 	</li>
 		 	<li>
-		 		search here too
+		 		<Search orientation='row'/>
 		 	</li>
 		 </ul>
 	)

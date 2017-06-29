@@ -3,22 +3,6 @@ var Link = require('react-router-dom').Link;
 var Search = require('./Search');
 
 class Home extends React.Component {
-	constructor(props) {
-		super(props)
-
-		this.state = {
-			toSearch: ''
-		}
-
-		this.handleSubmit = this.handleSubmit.bind(this);
-	}
-	handleSubmit() {
-		this.setState(() => {
-			var newState = {};
-			newState = city;
-			return newState;
-		});
-	}
 	render() {
 		return (
 			<div className='home-container'>
@@ -31,7 +15,7 @@ class Home extends React.Component {
 				<label className='bigFont bigSpacer'>
 					Enter a City and Country
 				</label>
-				<Search onSubmit={this.handleSubmit}/>
+				<Search orientation='column'/>
 			</div>
 		);
 	}
