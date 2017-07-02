@@ -33,7 +33,7 @@ class Search extends React.Component {
 					className='button'
 					onClick={() => {this.setState(() => {return {city: ''}});}}
 					to={{
-						pathname: '/weather',
+						pathname: '/forecast',
             search: '?city=' + this.state.city
 					}} >
 					Search

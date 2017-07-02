@@ -133,3 +133,10 @@ input {
 .weatherstyler img {
 	min-height: 100px;
 }
+.paleri {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+.detailink a:hover {
+	color: #000000;
+}

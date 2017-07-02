@@ -17,7 +17,7 @@ class App extends React.Component {
 					<Nav />
 					<Switch>
 						<Route exact path='/' component={Home} />
-						<Route exact path='/weather' component={Weather} />
+						<Route path='/details' component={Weather} />
 						<Route path='/forecast' component={Forecast} />
 						<Route render={ function() {
 								return (

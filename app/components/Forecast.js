@@ -26,7 +26,7 @@ class Forecast extends React.Component {
 	}
 	componentDidMount() {
 		var toSearch = queryString.parse(this.props.location.search);
-		api.fetchWeather('forecast', toSearch.city).then(function(resp) {
+		api.fetchWeather(5, toSearch.city).then(function(resp) {
 			if (resp === null) {
 				this.setState(function() {
 					return {
@@ -53,7 +53,6 @@ class Forecast extends React.Component {
 					});
        }
     });
-    console.log(this.state.city);
 	}
 	render() {
 		var props = this.props;
@@ -79,25 +78,51 @@ class Forecast extends React.Component {
 				<button className='button' onClick={() => {props.history.goBack()}}>Back</button>
 				<div className='row bigSpacer'>
 					{data &&
-						<div className='row'>
-							<p>{city}</p>
+						<div className='column'>
+							<div className='row'>
+								<p>{city}</p>
+							</div>
 							{data &&
 								<div className='row'>
-									<ForecastIconW resp={data} id={0} />
-									<ForecastIconW resp={data} id={1} />
-									<ForecastIconW resp={data} id={2} />
-									<ForecastIconW resp={data} id={3} />
-									<ForecastIconW resp={data} id={4} />
+									<Link className='detailink' to={{
+										pathname: '/details',
+				            search: '?city=' + city + '&day=0',
+				            state: data
+									}}>
+										<IconW resp={data} id={0} />
+									</Link>
+									<Link className='detailink' to={{
+										pathname: '/details',
+				            search: '?city=' + city + '&day=1',
+				            state: data
+									}}>
+										<IconW resp={data} id={1} />
+									</Link>
+									<Link className='detailink' to={{
+										pathname: '/details',
+				            search: '?city=' + city + '&day=2',
+				            state: data
+									}}>
+										<IconW resp={data} id={2} />
+									</Link>
+									<Link className='detailink' to={{
+										pathname: '/details',
+				            search: '?city=' + city + '&day=3',
+				            state: data
+									}}>
+										<IconW resp={data} id={3} />
+									</Link>
+									<Link className='detailink' to={{
+										pathname: '/details',
+				            search: '?city=' + city + '&day=4',
+				            state: data
+									}}>
+										<IconW resp={data} id={4} />
+									</Link>
 								</div>}
 						</div>
 					}
 				</div>
-				<div className='bigSpacer'></div>
-				{/*<Link className='button' to={{
-						pathname: '/weather',
-            search: '?city=' + city
-					}}>Weather</Link>*/}
-				<button className='button' onClick={() => {props.history.goBack()}}>Weather</button>
 			</div>
 		);
 	}
