@@ -22,7 +22,7 @@ a {
 	color: #000000;
 }
 a:hover {
-	color: #ffffff;
+	color: #000000;
 }
 button a {
 	color: inherit;
@@ -136,7 +136,4 @@ input {
 .paleri {
 	padding-left: 15px;
 	padding-right: 15px;
-}
-.detailink a:hover {
-	color: #000000;
 }

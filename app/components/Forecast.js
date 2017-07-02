@@ -60,6 +60,20 @@ class Forecast extends React.Component {
 		var error = this.state.error;
 		var loading = this.state.loading;
 		var data = this.state.data;
+		var infos = [];
+		if(data) {
+			for (var i = 0; i < data.list.length; i++) {
+				infos.push(
+					<Link key={i} to={{
+						pathname: '/details',
+	          search: '?city=' + city + '&day=' + i,
+	          state: data
+					}}>
+						<IconW resp={data} id={i} />
+					</Link>
+				)
+			}
+		}
 		if(loading === true) {
 			<Loading />
 		}
@@ -84,41 +98,7 @@ class Forecast extends React.Component {
 							</div>
 							{data &&
 								<div className='row'>
-									<Link className='detailink' to={{
-										pathname: '/details',
-				            search: '?city=' + city + '&day=0',
-				            state: data
-									}}>
-										<IconW resp={data} id={0} />
-									</Link>
-									<Link className='detailink' to={{
-										pathname: '/details',
-				            search: '?city=' + city + '&day=1',
-				            state: data
-									}}>
-										<IconW resp={data} id={1} />
-									</Link>
-									<Link className='detailink' to={{
-										pathname: '/details',
-				            search: '?city=' + city + '&day=2',
-				            state: data
-									}}>
-										<IconW resp={data} id={2} />
-									</Link>
-									<Link className='detailink' to={{
-										pathname: '/details',
-				            search: '?city=' + city + '&day=3',
-				            state: data
-									}}>
-										<IconW resp={data} id={3} />
-									</Link>
-									<Link className='detailink' to={{
-										pathname: '/details',
-				            search: '?city=' + city + '&day=4',
-				            state: data
-									}}>
-										<IconW resp={data} id={4} />
-									</Link>
+									{infos}
 								</div>}
 						</div>
 					}
